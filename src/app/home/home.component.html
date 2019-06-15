@@ -1,0 +1,12 @@
+<div id="cards">
+  <div class="card" *ngFor='let poke of pokemons'>
+    <div class="image">
+      <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ poke.id }}.png" />
+    </div>
+    <div class="data">
+      <a routerLink="/info/{{ poke.id }}" class="name">{{ poke.name | titlecase }}</a> <br /> <em class="nro">(#{{ poke.id }})</em><br>
+      <div class="types">{{ poke.types | titlecase }}</div>
+      <div class="evolve" [style.display]="poke.evolved == null ? 'none' : 'block'">Evolución de: {{ poke.evolved | titlecase }}</div>
+    </div>
+  </div>
+</div>

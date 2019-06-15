@@ -1,0 +1,13 @@
+<div id="container">
+  <div id="info">
+    <h1>{{ pokemon.name | titlecase}} (#{{ pokemon.id }})</h1>
+    <span>Habilidades: {{ pokemon.abilities }}</span><br />
+    <span>Estatura: {{ pokemon.height }} mts.</span><br />
+    <span>Peso: {{ pokemon.weight }} kgs.</span><br />
+    <span [style.display]="pokemon.evolved_from == null ? 'none' : 'block'">Evolución de: {{ pokemon.evolved_from | titlecase }}</span><br />
+    <div class="images">
+      <img *ngFor='let img of pokemon.images' src="{{ img }}" />
+    </div>
+    <a routerLink="/home">Volver al inicio</a>.
+  </div>
+</div>

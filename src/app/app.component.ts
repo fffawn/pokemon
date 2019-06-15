@@ -1,39 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import {PokemonService} from './pokemon.service';
+import { Component } from '@angular/core';
+import {slideInAnimation} from './route-animation';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  styleUrls: ['./app.component.sass'],
+  animations: [ slideInAnimation ]
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'Pokémon';
-  pokemons: any[] = [];
-  informations: any[] = [];
-
-  constructor(
-    protected pokemonService: PokemonService
-  ) {
-  }
-
-  ngOnInit() {
-    this.pokemonService.getPokemons()
-      .subscribe(
-        (data) => { // Success
-          data.results.forEach((pokemon, i) => {
-            this.pokemonService.getPokeInfo(pokemon.url)
-              .subscribe((data2) => {
-                this.pokemons.push({id: i + 1, name: pokemon.name, types: data2.types.map(x => x.type.name).join(', ')});
-            }, (error) => {
-                console.error(error);
-            });
-          });
-
-          console.log(this.pokemons);
-        },
-        (error) => {
-          console.error(error);
-        }
-      );
-  }
 }
