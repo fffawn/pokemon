@@ -9,7 +9,7 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./info.component.sass']
 })
 export class InfoComponent implements OnInit {
-  pokemon = {};
+  pokemon = {id: 0, name: null, abilities: null, height: null, evolved_from: null, weight: null, images: null};
 
   constructor(
     protected pokemonService: PokemonService,
@@ -22,9 +22,9 @@ export class InfoComponent implements OnInit {
     const param_id = this.route.snapshot.paramMap.get('id');
 
     this.pokemonService.getPokeInfo('https://pokeapi.co/api/v2/pokemon/' + param_id)
-      .subscribe((data : any) => {
+      .subscribe((data: any) => {
         this.pokemonService.getPokeInfo('https://pokeapi.co/api/v2/pokemon-species/' + param_id)
-          .subscribe((data2 : any) => {
+          .subscribe((data2: any) => {
             this.pokemon.id = data.id;
             this.pokemon.name = data.name;
             this.pokemon.abilities = data.abilities.map(f => f.ability.name).join(', ');
