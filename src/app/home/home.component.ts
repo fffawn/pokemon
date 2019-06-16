@@ -4,7 +4,7 @@ import {PokemonService} from '../pokemon.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.sass']
+  styleUrls: ['./home.component.sass'],
 })
 export class HomeComponent implements OnInit {
   title = 'Pokémon';
@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.pokemonService.getPokemons()
       .subscribe(
         (data) => { // Success
@@ -37,5 +38,7 @@ export class HomeComponent implements OnInit {
           console.error(error);
         }
       );
+
+    console.log(this.pokemons);
   }
 }

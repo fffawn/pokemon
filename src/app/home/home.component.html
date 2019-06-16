@@ -1,5 +1,8 @@
+<form>
+  <input type="text" class="input" name="name" [(ngModel)]="search" placeholder="Buscar por nombre..." />
+</form>
 <div id="cards">
-  <div class="card" *ngFor='let poke of pokemons'>
+  <div class="card" *ngFor='let poke of pokemons | filter:"name":search'>
     <div class="image">
       <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{ poke.id }}.png" />
     </div>

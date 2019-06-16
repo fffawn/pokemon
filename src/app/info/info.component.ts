@@ -32,7 +32,6 @@ export class InfoComponent implements OnInit {
             this.pokemon.evolved_from = data2.evolves_from_species != null ? data2.evolves_from_species.name : null;
             this.pokemon.weight = data.weight;
             this.pokemon.images = Object.values(data.sprites);
-            console.log(data);
           }, (error) => {
             console.log(error);
           });
