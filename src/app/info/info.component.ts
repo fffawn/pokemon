@@ -22,9 +22,9 @@ export class InfoComponent implements OnInit {
     const param_id = this.route.snapshot.paramMap.get('id');
 
     this.pokemonService.getPokeInfo('https://pokeapi.co/api/v2/pokemon/' + param_id)
-      .subscribe((data) => {
+      .subscribe((data : any) => {
         this.pokemonService.getPokeInfo('https://pokeapi.co/api/v2/pokemon-species/' + param_id)
-          .subscribe((data2) => {
+          .subscribe((data2 : any) => {
             this.pokemon.id = data.id;
             this.pokemon.name = data.name;
             this.pokemon.abilities = data.abilities.map(f => f.ability.name).join(', ');
